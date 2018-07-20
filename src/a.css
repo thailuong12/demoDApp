@@ -1,0 +1,13 @@
+#housesResult {
+    border: black solid;
+    padding-left: 30px;
+    padding-top: 30px;
+    margin-bottom: 30px; 
+}
+body {
+    background-color: rgb(247, 231, 199)
+}
+.btnBuy{
+    float: right;
+    margin-top: -40px;
+}
