@@ -9,26 +9,29 @@ contract Realestate {
         address seller;
         string streetAddress;
         uint256 price;
+        address buyer;
     }
 
     mapping (uint=>House) public houses;
 
     uint public housesCount;
 
-    function Realestate() public {
-        addHouse("nha cua Thai", "Tp.HCM", 1000000000000000000);
-        addHouse("nha cua Thai2", "Ha Noi", 2000000000000000000);
-
+    constructor() public {
+        addHouse("nha cua Thai", "Tp.HCM", 1);
+        addHouse("nha cua Thai2", "Ha Noi", 2);
+        addHouse("nha cua Thai", "Tp.HCM", 3);
     }
 
     function addHouse(string title, string streetAddress, uint256 price) public {
         housesCount++;
         address host = msg.sender;
-        houses[housesCount] = House(housesCount, title, host, streetAddress, price);
+        houses[housesCount] = House(housesCount, title, host, streetAddress, price, 0x0);
     }
 
-    function buyHouse(uint256 houseId) payable public {
+    function buyHouse(uint houseId) payable public {
+      //  require(msg.value/1 ether == houses[houseId].price);
         address buyer = msg.sender;
-
+        houses[houseId].seller.transfer(msg.value);
+        houses[houseId].buyer = buyer;
     }
 }
