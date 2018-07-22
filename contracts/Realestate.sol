@@ -29,9 +29,7 @@ contract RealEstate {
     }
 
     function buyHouse(uint houseId) payable public {
-      //  require(msg.value/1 ether == houses[houseId].price);
-        address buyer = msg.sender;
         houses[houseId].seller.transfer(msg.value);
-        houses[houseId].buyer = buyer;
+        houses[houseId].buyer = msg.sender;
     }
 }
