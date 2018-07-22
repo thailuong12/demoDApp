@@ -1,3 +1,7 @@
+# build environment
+.vscode 
+build
+
 # Logs
 logs
 *.log

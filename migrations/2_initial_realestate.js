@@ -1,5 +1,5 @@
-var Realestate = artifacts.require("./Realestate.sol");
+var RealEstate = artifacts.require("./RealEstate.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(Realestate);
+  deployer.deploy(RealEstate);
 };

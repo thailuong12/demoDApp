@@ -22,11 +22,11 @@ App = {
   },
 
   initContract: function () {
-    $.getJSON('Realestate.json', function (data) {
+    $.getJSON('RealEstate.json', function (data) {
       var HouseArtifact = data;
-      App.contracts.Realestate = TruffleContract(HouseArtifact);
+      App.contracts.RealEstate = TruffleContract(HouseArtifact);
 
-      App.contracts.Realestate.setProvider(App.web3Provider);
+      App.contracts.RealEstate.setProvider(App.web3Provider);
 
       return App.render();
     });
@@ -52,7 +52,7 @@ App = {
       }
     });
     // load contract data
-    App.contracts.Realestate.deployed().then(function (instance) {
+    App.contracts.RealEstate.deployed().then(function (instance) {
 
       houseInstance = instance;
       return houseInstance.housesCount();
@@ -69,19 +69,17 @@ App = {
           var price = house[4];
           var buyer = house[5];
           // render houses
-          console.log('asdasd', price.toNumber())
           var btn = ''
           if (buyer == '0x0000000000000000000000000000000000000000') {
-            //+ id + "," + price + "," + seller + ","
-            btn = "<button id='" + id + "' class='btn btn-primary btnBuy' onclick='App.buy(" + id + "," + price + "," + seller + ")'>Buy</button>"
-            //"<div id='" + 'div' + id + "' class='btn btn-primary btnBuy'>"+seller+"</div>"
+            btn = "<button id='" + id + "' class='btn btn-sm btn-outline-secondary btnBuy' onclick='App.buy(" + id + "," + price + "," + seller + ")'>Buy</button>"
           }
-          var houseTemplate = "<div id='housesResult'>" + "<div> ID: " + id + "</div><br>" +
+          var houseTemplate = "<div class='card'>" +
+           "<div class='card-body' id='housesResult'>" + "<div> ID: " + id + "</div><br>" +
             "<div>Description: " + title + "</div><br>" + "<div>Seller: " + "<span  id='" + 'seller' + id + "'>" + seller + "</span>" + "</div><br>" +
             "<div>Address: " + streetAddress + "</div><br>" + "<div> Price(wei): " + "<span  id='" + 'price' + id + "'>" + price + "</span>" + "</div><br>" +
             "<div> Buyer: " + buyer + "</div>" +
             btn +
-            "</div>"
+            "</div></div><br>" 
           housesResult.append(houseTemplate)
         })
       }
@@ -106,7 +104,7 @@ App = {
 
       var account = accounts[0];
       console.log(web3.toWei(parseInt(document.getElementById('price' + id).innerHTML), 'ether'))
-      App.contracts.Realestate.deployed().then(function (instance) {
+      App.contracts.RealEstate.deployed().then(function (instance) {
 
         realestateInstance = instance;
         web3.eth.sendTransaction({
