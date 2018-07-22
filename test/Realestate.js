@@ -1,4 +1,4 @@
-var Realestate = artifacts.require("./Realestate.sol");
+var Realestate = artifacts.require("./RealEstate.sol");
 
 
 contract("Realestate", (account)=>{

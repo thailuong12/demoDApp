@@ -51,6 +51,7 @@ App = {
         $('#accountAddress').html('Your Account: ' + account + "   " + "</br>" + "<button class='btn btn-primary up'>    Up</button>")
       }
     });
+
     // load contract data
     App.contracts.Realestate.deployed().then(function (instance) {
 
@@ -114,7 +115,7 @@ App = {
           from: account,
           value: web3.toWei(parseInt(document.getElementById('price' + id).innerHTML), 'ether')
         }, console.log)
-        // Execute adopt as a transaction by sending account
+        // Execute 'buy house' as a transaction
         return realestateInstance.buyHouse(id);
       }).then(function (result) {
         console.log(result)

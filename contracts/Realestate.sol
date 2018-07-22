@@ -1,7 +1,7 @@
-pragma solidity ^0.4.17;
+pragma solidity ^0.4.24;
 
 
-contract Realestate {
+contract RealEstate {
     // model a house
     struct House {
         uint id;
