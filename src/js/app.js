@@ -69,17 +69,17 @@ App = {
           var price = house[4];
           var buyer = house[5];
           // render houses
-          console.log('asdasd', price.toNumber())
           var btn = ''
           if (buyer == '0x0000000000000000000000000000000000000000') {
-            btn = "<button id='" + id + "' class='btn btn-outline-secondary btnBuy' onclick='App.buy(" + id + "," + price + "," + seller + ")'>Buy</button>"
+            btn = "<button id='" + id + "' class='btn btn-sm btn-outline-secondary btnBuy' onclick='App.buy(" + id + "," + price + "," + seller + ")'>Buy</button>"
           }
-          var houseTemplate = "<div id='housesResult'>" + "<div> ID: " + id + "</div><br>" +
+          var houseTemplate = "<div class='card'>" +
+           "<div class='card-body' id='housesResult'>" + "<div> ID: " + id + "</div><br>" +
             "<div>Description: " + title + "</div><br>" + "<div>Seller: " + "<span  id='" + 'seller' + id + "'>" + seller + "</span>" + "</div><br>" +
             "<div>Address: " + streetAddress + "</div><br>" + "<div> Price(wei): " + "<span  id='" + 'price' + id + "'>" + price + "</span>" + "</div><br>" +
             "<div> Buyer: " + buyer + "</div>" +
             btn +
-            "</div>"
+            "</div></div><br>" 
           housesResult.append(houseTemplate)
         })
       }
